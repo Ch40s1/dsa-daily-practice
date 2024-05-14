@@ -14,6 +14,7 @@ class Program:
         self.user_program()
 
     def user_program(self):
+        print("HELOOOOOOO! Welcome")
         for course in self.courses:
             print(course)
         prompt_program = input("what course?\n").lower()
