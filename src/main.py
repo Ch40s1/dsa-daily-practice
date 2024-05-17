@@ -15,12 +15,13 @@ def main():
             correct_answer = q_info["correct_answer"]
             for option, answer in q_info['options'].items():
                 print(f"  {option}) {answer}")
-            user_answer = input("Choose answer: ").upper()
+            user_answer = input("Choose answer: ").lower()
             if user_answer == correct_answer:
                 print("Correct!")
                 continue
             else:
                 print("Incorrect")
+                print(f"correct answer was: {correct_answer}")
                 continue
         prompt_program = input("Type 'exit' to exit?\n").lower()
         if prompt_program == "exit":
