@@ -1,0 +1,58 @@
+ '''
+    def run_course():
+        while True:
+            user_program()
+
+    def user_program():
+        user_answer = None
+        print("HELOOOOOOO! Welcome")
+        for q_id, q_info in quiz_questions.items():
+            print(f"questions {q_id}: {q_info['question']}")
+            correct_answer = q_info["correct_answer"]
+            for option, answer in q_info['options'].items():
+                print(f"  {option}) {answer}")
+            user_answer = input("Choose answer: ").lower()
+            if user_answer == correct_answer:
+                print("Correct!")
+                continue
+            else:
+                print("Incorrect")
+                print(f"correct answer was: {correct_answer}")
+                continue
+        prompt_program = input("Type 'exit' to exit?\n").lower()
+        if prompt_program == "exit":
+            print("exiting program")
+            exit()
+
+    run_course()
+    '''
+
+
+from pathlib import Path
+
+def files_are_equal(file1, file2):
+    with open(file1, 'rb') as f1, open(file2, 'rb') as f2:
+        return f1.read() == f2.read()
+
+def main():
+    # Define the paths
+    file1 = Path('src/answer.txt').expanduser().resolve()
+    file2 = Path('src/user-answer.txt').expanduser().resolve()
+
+    # Check if both files exist before proceeding
+    if not file1.exists():
+        print(f"File not found: {file1}")
+        return
+    if not file2.exists():
+        print(f"File not found: {file2}")
+        return
+
+    user_input = input("Are you done (y/n): ")
+    if user_input.lower() == "y":
+        if files_are_equal(file1, file2):
+            print("Correct")
+        else:
+            print("Wrong")
+
+if __name__ == "__main__":
+    main()
